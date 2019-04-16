@@ -12,6 +12,10 @@
                     Effectuez une recherche pour trouver la personne dont vous avez besoin.
                 </p>
                 <a href="#employeesGroup" class="button white">Voir</a>
+
+                <?php //condition sir l'employé est habilité et s'il est employé ?>
+                <a href="#addEmployee" class="button white" data-toggle="modal">Créer un nouveau compte employé</a>
+
             </div>
         </div>
     </div>
@@ -208,6 +212,47 @@
         </div>
     </div>
 </section>
+
+<!-- MODAL CREATION EMPLOYE -->
+<div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="modaladdEmployee" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" action="" method="POST">
+            <div class="modal-header">
+                Créer un espace de connexion employé
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Entrer le nom de l'employé">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Entrer le prénom de l'employé">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Entrer l'e-mail de l'employé">
+                </div>
+                <div class="form-group">
+                    <label for="post">Poste</label>
+                    <select name="post" class="form-control" id="post">
+                        <option value="Infirmier">Infirmier</option>
+                        <option value="Médecin Généraliste">Médecin Généraliste</option>
+                        <option value="choix3">Choix existantiel</option>
+                        <option value="choix4">Choix 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="button">Créer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 
 <?php $content = ob_get_clean(); ?>

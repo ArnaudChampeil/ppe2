@@ -61,6 +61,13 @@ try {
             }
             //PAGE EMPLOYES ************** "EMPLOYEES.PHP" N'EST PAS RECONNU COMME UN FICHIER PHP, LE FICHIER EST NOMMEE "MPLOYEES.PHP" POUR LE MOMENT **************
             if ($_GET["action"] == "employees") {
+                //AJOUT D'EMPLOYEES
+                if(isset($_POST["name"]) && isset($_POST["firstname"]) && isset($_POST["email"]) && isset($_POST["post"])){
+                    var_dump($_POST);die();
+
+                    addEmployee($_POST["name"], $_POST["firstname"], $_POST["email"], $_POST["post"]);
+                    header("Location: index.php?action=employees");
+                }
                 require_once "view/frontend/mployees.php";
                 exit();
             }

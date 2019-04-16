@@ -55,6 +55,7 @@
                                 <li class="list-group-item active">N°<?= $data["id_patient"]; ?></li>
                                 <li class="list-group-item">Nom : <?= $data["name"]; ?></li>
                                 <li class="list-group-item">Prénom : <?= $data["firstname"]; ?></li>
+                                <li class="list-group-item">Identifiant : <?= $data["login"]; ?></li>
                                 <li class="list-group-item">Email : <?= $data["email"]; ?></li>
                                 <li class="list-group-item">Maladie : <?= $data["disease"]; ?></li>
                                 <li class="list-group-item">Compte crée le <?= $data["creationDate"]; ?></li>
@@ -70,6 +71,7 @@
     </div>
 </section>
 
+<!-- MODAL CREATION PATIENT -->
 <div class="modal fade" id="addPatient" tabindex="-1" role="dialog" aria-labelledby="modaladdPatient" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form class="modal-content" action="" method="POST">
@@ -85,8 +87,8 @@
                     <input type="text" name="name" class="form-control" id="name" placeholder="Entrer le nom du patient">
                 </div>
                 <div class="form-group">
-                    <label for="firstName">Prénom</label>
-                    <input type="text" name="firstname" class="form-control" id="firstName" placeholder="Entrer le prénom du patient">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Entrer le prénom du patient">
                 </div>
                 <div class="form-group">
                     <label for="disease">Maladie</label>

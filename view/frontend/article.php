@@ -20,11 +20,17 @@
 
         </div>
 
+
         <img class="center-block" src="public/img/articles/imgArticle<?= $data["id_article"].$data["extension"]; ?>" alt="<?= $data["title"]; ?>">
 
         <p class="section-padding">
             <?= $data["content"]; ?>
         </p>
+
+        <?php if(!empty($data["link"])): ?>
+            <a href="<?= $data["link"]; ?>">-> Voir l'article <- </a>
+        <?php endif ; ?>
+
         <p class="navbar-right">Publié le <?= $data["dateCreation"]; ?></p>
 
     </div>

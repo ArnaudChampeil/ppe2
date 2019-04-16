@@ -93,6 +93,20 @@ function randomString($size)
         $article->unsetArticle($id_article);
     }
 
+//EMPLOYES
+   function addEmployee($name, $firstname, $email, $post){
+       $name = htmlspecialchars($name);
+       $firstname = htmlspecialchars($firstname);
+       $email = htmlspecialchars($email);
+       $post = htmlspecialchars($post);
+
+       //CREER UN ALGO QUI CHOISI UN NIVEAU D'ACCES EN FONCTION DU POSTE DE L'EMPLOYE
+
+       $employee = new EmployeesManager();
+       $employee->setEmployee($name, $firstname, $email, $post, $access);
+   }
+
+
 //PATIENTS
     function addPatient($name, $firstname, $disease){
         $name = htmlspecialchars($name);

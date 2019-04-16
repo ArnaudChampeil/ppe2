@@ -18,7 +18,9 @@
         <div id="collapseAddArticle" class="collapse" aria-labelledby="headingOne">
             <form action="" method="POST" class="card-body form-control" enctype="multipart/form-data">
                 <input type="text" name="title" class="form-control" placeholder="Titre" required>
+
                 <textarea name="content" rows="20" class="form-control" placeholder="Contenu de l'article" required></textarea>
+
                 <input type="hidden" name="MAX_FILE_SIZE" value="600000" /> <!-- Limite 600ko  FONCTIONNE PAS -->
                 <input type="text" name="link" class="form-control" placeholder="Lien de l'article (si l'article vient d'un autre site)">
                 <input type="file" name="imgArticle" class="form-control" placeholder="Upload la photo de l'image" required>

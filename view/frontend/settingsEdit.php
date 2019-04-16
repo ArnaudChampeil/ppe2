@@ -39,7 +39,7 @@
                             <?= $data["nbMessages"]; ?> messages<br>
 
                             <footer class="blockquote-footer">
-                                Compte crée le<cite title="Source Title"><?= $data["creationDate"]; ?></cite>
+                                Compte crée le <cite title="Source Title"><?= $data["creationDate"]; ?></cite>
                                 <button type="submit" class="btn btn-primary navbar-right">Valider les modifications</button>
                             </footer>
                         </form>

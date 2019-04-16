@@ -102,8 +102,8 @@
                                     <img src="public/img/mail-arrow.png" alt="">
                                 </div>
                                 <p><strong>E-mail: </strong>
-                                    <a href="mailto:youremail@example.com">chu-assas@chu-assas.com</a> <br />
-                                    <a href="mailto:youremail@example.com">contact@chu-assas.com</a>
+                                    <a href="mailto:youremail@example.com">chu-assas@chu-assas.com (E-MAIL BIDON)</a> <br />
+                                    <a href="mailto:youremail@example.com">contact@chu-assas.com (E-MAIL BIDON)</a>
                                 </p>
                             </div>
                         </address>

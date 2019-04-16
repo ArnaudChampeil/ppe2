@@ -38,6 +38,7 @@ WHERE a.name LIKE '%$x%' OR a.firstname LIKE '%$x%' OR a.email LIKE '%$x%' OR p.
 
         //Prendre l'id de la derniere entrée a account pour la mettre dans la table patient
         $id = $db->lastInsertId();
+
         $patient2 = $db->prepare("INSERT INTO patients SET id_account = ?, login = ?, disease = ?, creationDate = NOW()");
         $patient2->execute(array($id, $login, $disease));
     }
