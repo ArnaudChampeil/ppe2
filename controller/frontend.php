@@ -100,12 +100,41 @@ function randomString($size)
        $email = htmlspecialchars($email);
        $post = htmlspecialchars($post);
 
-       //CREER UN ALGO QUI CHOISI UN NIVEAU D'ACCES EN FONCTION DU POSTE DE L'EMPLOYE
+       switch ($post){
+           case "Direction" :
+               $access = 1;
+               break;
+           case "Cadre supérieur de santé" :
+               $access = 2;
+               break;
+           case "Médecin" :
+               $access = 2;
+               break;
+           case "Sage-femme" :
+               $access = 3;
+               break;
+           case "Cadre de santé" :
+               $access = 3;
+               break;
+           case "Infirmier" :
+               $access = 4;
+               break;
+           case "Aide-soignant" :
+               $access = 5;
+               break;
+           case "Brancardier" :
+               $access = 5;
+               break;
+       }
 
        $employee = new EmployeesManager();
        $employee->setEmployee($name, $firstname, $email, $post, $access);
    }
-
+   function seeEmployees($post){
+        $employees = new EmployeesManager();
+        $employees->getEmployees($post);
+        return $employees;
+   }
 
 //PATIENTS
     function addPatient($name, $firstname, $disease){

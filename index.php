@@ -63,12 +63,19 @@ try {
             if ($_GET["action"] == "employees") {
                 //AJOUT D'EMPLOYEES
                 if(isset($_POST["name"]) && isset($_POST["firstname"]) && isset($_POST["email"]) && isset($_POST["post"])){
-                    var_dump($_POST);die();
-
                     addEmployee($_POST["name"], $_POST["firstname"], $_POST["email"], $_POST["post"]);
                     header("Location: index.php?action=employees");
                 }
+                $dir = seeEmployees("Direction");
+                $sup = seeEmployees("Cadre supérieur de santé");
+                $med = seeEmployees("Médecin");
+                $sag = seeEmployees("Sage-femme");
+                $cad = seeEmployees("Cadre de santé");
+                $inf = seeEmployees("Infirmier");
+                $aid = seeEmployees("Aide-soignant");
+                $bra = seeEmployees("Brancardier");
                 require_once "view/frontend/mployees.php";
+                var_dump($dir);
                 exit();
             }
             //PAGE PATIENTS

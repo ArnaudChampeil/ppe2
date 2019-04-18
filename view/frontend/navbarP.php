@@ -16,6 +16,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="?action=home#home">Accueil</a></li>
                 <li><a href="?action=channels">Salon</a></li>
+                <li><a href="?action=employees#employees">Personnel de l'hôpital</a></li>
                 <li><a href="?action=settings">Paramètres</a></li>
                 <li><a href="?action=logout">Déconnexion</a></li>
             </ul>

@@ -16,7 +16,7 @@ class MessagesManager{
     }
     public function getMessages($id){
         $db = $this->manager->connectDb();
-        $messages = $db->prepare("SELECT a.firstname, m.dateCreation, m.content FROM accounts a, messages m WHERE a.id_account = m.id_account  AND m.id_channel = ? GROUP BY m.dateCreation DESC");
+        $messages = $db->prepare("SELECT a.firstname, m.dateCreation, m.content FROM accounts a, messages m WHERE a.id_account = m.id_account  AND m.id_channel = ? GROUP BY m.dateCreation");
         $messages->execute(array($id));
 
         return $messages;

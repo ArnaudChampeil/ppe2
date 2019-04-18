@@ -3,9 +3,10 @@ require_once "model/Manager.php";
 
 class EmployeesManager extends AccountsManager{
 
-    public function getEmployees(){
+    public function getEmployees($post){
         $db = $this->manager->connectDb();
-        $employees = $db->query("SELECT * FROM employees");
+        $employees = $db->prepare("SELECT a.name, a.firstname FROM accounts a INNER JOIN employees e ON a.id_account = e.id_account WHERE e.post = ? GROUP BY a.id_account DESC");
+        $employees->execute(array($post));
 
         return $employees;
     }

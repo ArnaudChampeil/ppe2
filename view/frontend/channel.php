@@ -13,11 +13,7 @@
 <div class="section-padding gray-bg" id="channelN<?= $_GET["id_channel"]; ?>">
     <div class="container">
 
-        <form action="" method="POST" class="form-group">
-            <label for="message">Votre message</label>
-            <textarea class="form-control" name="message" id="message" rows="1"></textarea>
-            <button type="submit" class="button">Publier</button>
-        </form>
+
 
         <?php while($data = $message->fetch(PDO::FETCH_ASSOC)): ?>
             Message de <?= $data["firstname"]; ?> <span class="badge">le <?= $data["dateCreation"]; ?></span>
@@ -25,6 +21,12 @@
                 <?= $data["content"]; ?>
             </div>
         <?php endwhile; ?>
+
+        <form action="" method="POST" class="form-group">
+            <label for="message">Votre message</label>
+            <textarea class="form-control" name="message" id="message" rows="1"></textarea>
+            <button type="submit" class="button">Publier</button>
+        </form>
 
     </div>
 </div>

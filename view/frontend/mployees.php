@@ -42,15 +42,19 @@
                         <div class="container">
                             <div class="caption-title" data-animation="animated fadeInUp">
                                 <h2>Direction</h2>
+                                <p>
+                                    Ils assurent la gestion administrative de l'hôpital.
+                                </p>
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
+                                <?php while($data = $dir->fetch(PDO::FETCH_ASSOC)) : var_dump($data); ?>
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="single-team">
                                         <div class="team-photo">
                                             <img src="public/img/test1.jpg" alt="">
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
+                                        <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         <h6>Co. Founder</h6>
                                         <ul class="social-menu">
                                             <li><a href="#"><i class="ti-facebook"></i></a></li>
@@ -59,48 +63,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test2.jpg" alt="">
-                                        </div>
-                                        <h4>DEBORAH BROWN</h4>
-                                        <h6>UX Designer</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="images/team-section-3.png" alt="">
-                                        </div>
-                                        <h4>HARRY BANKS</h4>
-                                        <h6>Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="images/team-section-4.png" alt="">
-                                        </div>
-                                        <h4>VICTORIA CLARK</h4>
-                                        <h6>Creative Director</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -109,39 +72,10 @@
 
                 <div class="item row">
                     <div class="v-center">
-
                         <div class="container">
                             <div class="caption-title" data-animation="animated fadeInUp">
                                 <h2>Le cadre supérieur de santé</h2>
-                            </div>
-                            <div class="caption-desc" data-animation="animated fadeInDown">
-
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
-                                        </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="item row">
-                    <div class="v-center">
-                        <div class="container">
-                            <div class="caption-title" data-animation="animated fadeInUp">
-                                <h2>Personnel de santé</h2>
+                                <p>Ils assurent la gestion et l’organisation des soins sur le pôle.</p>
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
@@ -169,7 +103,167 @@
                     <div class="v-center">
                         <div class="container">
                             <div class="caption-title" data-animation="animated fadeInUp">
-                                <h2>A définir</h2>
+                                <h2>Les médecins</h2>
+                                <p>
+                                    Ils ont la responsabilité des visites, examens et traitements vous concernant.
+                                </p>
+                            </div>
+                            <div class="caption-desc" data-animation="animated fadeInDown">
+
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="single-team">
+                                        <div class="team-photo">
+                                            <img src="public/img/test1.jpg" alt="">
+                                        </div>
+                                        <h4>JEMY SEDONCE</h4>
+                                        <h6>Co. Founder</h6>
+                                        <ul class="social-menu">
+                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item row">
+                    <div class="v-center">
+                        <div class="container">
+                            <div class="caption-title" data-animation="animated fadeInUp">
+                                <h2>Les sages-femmes</h2>
+                                <p>
+                                    Elles assurent le suivi de votre grossesse et les soins de votre accouchement.
+                                </p>
+                            </div>
+                            <div class="caption-desc" data-animation="animated fadeInDown">
+
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="single-team">
+                                        <div class="team-photo">
+                                            <img src="public/img/test1.jpg" alt="">
+                                        </div>
+                                        <h4>JEMY SEDONCE</h4>
+                                        <h6>Co. Founder</h6>
+                                        <ul class="social-menu">
+                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item row">
+                    <div class="v-center">
+                        <div class="container">
+                            <div class="caption-title" data-animation="animated fadeInUp">
+                                <h2>Les cadres de santé</h2>
+                                <p>
+                                    Ils sont responsables de soins infirmiers, médico-techniques ou de rééducation dans l’unité dans laquelle vous êtes hospitalisé
+                                    et garantissent leur bon fonctionnement. Ils sont à votre disposition pour recueillir vos demandes, vous informer et vous conseiller.
+                                </p>
+                            </div>
+                            <div class="caption-desc" data-animation="animated fadeInDown">
+
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="single-team">
+                                        <div class="team-photo">
+                                            <img src="public/img/test1.jpg" alt="">
+                                        </div>
+                                        <h4>JEMY SEDONCE</h4>
+                                        <h6>Co. Founder</h6>
+                                        <ul class="social-menu">
+                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item row">
+                    <div class="v-center">
+                        <div class="container">
+                            <div class="caption-title" data-animation="animated fadeInUp">
+                                <h2>Les infirmiers</h2>
+                                <p>
+                                    Ils exercent un rôle relationnel, éducatif et technique pour maintenir, restaurer et promouvoir votre santé et veiller à votre confort.
+                                    Ils dispensent les soins prescrits par les médecins et assurent une surveillance constante de votre état de santé.
+                                </p>
+                            </div>
+                            <div class="caption-desc" data-animation="animated fadeInDown">
+
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="single-team">
+                                        <div class="team-photo">
+                                            <img src="public/img/test1.jpg" alt="">
+                                        </div>
+                                        <h4>JEMY SEDONCE</h4>
+                                        <h6>Co. Founder</h6>
+                                        <ul class="social-menu">
+                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item row">
+                    <div class="v-center">
+                        <div class="container">
+                            <div class="caption-title" data-animation="animated fadeInUp">
+                                <h2>Les aides-soignants</h2>
+                                <p>
+                                    Ils secondent les infirmiers dans le domaine de l’hygiène, veillent à votre confort et prennent soin de votre environnement.
+                                </p>
+                            </div>
+                            <div class="caption-desc" data-animation="animated fadeInDown">
+
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="single-team">
+                                        <div class="team-photo">
+                                            <img src="public/img/test1.jpg" alt="">
+                                        </div>
+                                        <h4>JEMY SEDONCE</h4>
+                                        <h6>Co. Founder</h6>
+                                        <ul class="social-menu">
+                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item row">
+                    <div class="v-center">
+                        <div class="container">
+                            <div class="caption-title" data-animation="animated fadeInUp">
+                                <h2>Les brancardiers</h2>
+                                <p>
+                                    Ils facilitent vos déplacements dans les différents services de l’hôpital.
+                                </p>
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
@@ -200,13 +294,25 @@
                     <strong>Direction</strong>
                 </li>
                 <li data-target="#caption_slide" data-slide-to="1">
-                    <strong>Le cadre supérieur de santé</strong>.
+                    <strong>Cadre supérieur de santé</strong>.
                 </li>
                 <li data-target="#caption_slide" data-slide-to="2">
-                    <strong>Personnel de santé</strong>.
+                    <strong>Médecins</strong>.
                 </li>
                 <li data-target="#caption_slide" data-slide-to="3">
-                    <strong>A définir </strong>.
+                    <strong>Sages-femmes</strong>.
+                </li>
+                <li data-target="#caption_slide" data-slide-to="4">
+                    <strong>Cadres de santé</strong>.
+                </li>
+                <li data-target="#caption_slide" data-slide-to="5">
+                    <strong>Infirmiers</strong>.
+                </li>
+                <li data-target="#caption_slide" data-slide-to="6">
+                    <strong>Aides-soignants</strong>.
+                </li>
+                <li data-target="#caption_slide" data-slide-to="7">
+                    <strong>Brancardiers</strong>.
                 </li>
             </ol>
         </div>
@@ -239,10 +345,14 @@
                 <div class="form-group">
                     <label for="post">Poste</label>
                     <select name="post" class="form-control" id="post">
+                        <option value="Brancardier">Brancardier</option>
+                        <option value="Aide-soignant">Aide-soignant</option>
                         <option value="Infirmier">Infirmier</option>
-                        <option value="Médecin Généraliste">Médecin Généraliste</option>
-                        <option value="choix3">Choix existantiel</option>
-                        <option value="choix4">Choix 4</option>
+                        <option value="Cadre de santé">Cadre de santé</option>
+                        <option value="Sage-femme">Sage-femme</option>
+                        <option value="Médecin">Médecin</option>
+                        <option value="Cadre supérieur de santé">Cadre supérieur de santé</option>
+                        <option value="Direction">Direction</option>
                     </select>
                 </div>
             </div>
