@@ -40,6 +40,7 @@ try {
                 require_once "view/frontend/articleEdit.php";
                 exit();
             }
+            //SUPPRESSION
             if(isset($_GET["article"]) == "deleteArticle"){
                 deleteArticle($_GET["id"]);
                 header("Location: index.php?action=home");
@@ -75,7 +76,6 @@ try {
                 $aid = seeEmployees("Aide-soignant");
                 $bra = seeEmployees("Brancardier");
                 require_once "view/frontend/mployees.php";
-                var_dump($dir);
                 exit();
             }
             //PAGE PATIENTS

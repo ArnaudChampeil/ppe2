@@ -13,14 +13,30 @@
 <div class="section-padding gray-bg" id="channelN<?= $_GET["id_channel"]; ?>">
     <div class="container">
 
-
-
-        <?php while($data = $message->fetch(PDO::FETCH_ASSOC)): ?>
-            Message de <?= $data["firstname"]; ?> <span class="badge">le <?= $data["dateCreation"]; ?></span>
-            <div class="alert alert-info" role="alert">
-                <?= $data["content"]; ?>
+            <div class="scroll">
+                <?php //MESSAGE A DROITE SI L'USER L'A ECRIT SINON MESSAGE A GAUCHE
+                while($data = $message->fetch(PDO::FETCH_ASSOC)):
+                    if ($data["id_account"] != $_SESSION["id_account"]) {
+                        ?>
+                        <p>Message de <?= $data["firstname"]; ?> <span class="badge">le <?= $data["dateCreation"]; ?></span></p>
+                        <div class="alert alert-info">
+                            <?= $data["content"]; ?>
+                        </div>
+                        <?php
+                    }else{
+                        ?>
+                        <div class="right">
+                            <p>Message de <?= $data["firstname"]; ?><span class="badge"> le <?= $data["dateCreation"]; ?></span></p>
+                            <div class="alert message right">
+                                <?= $data["content"]; ?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                endwhile;
+                ?>
             </div>
-        <?php endwhile; ?>
+
 
         <form action="" method="POST" class="form-group">
             <label for="message">Votre message</label>

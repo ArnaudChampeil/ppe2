@@ -21,7 +21,6 @@
 
                 <a class="btn btn-danger navbar-right" href="?action=article&id=<?= $_GET["id"]; ?>&article=deleteArticle">Supprimer</a>
 
-
             </div>
 
             <img class="center-block" src="public/img/articles/imgArticle<?= $data["id_article"].$data["extension"]; ?>" alt="<?= $data["title"]; ?>">

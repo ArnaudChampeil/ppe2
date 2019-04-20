@@ -132,9 +132,45 @@ function randomString($size)
    }
    function seeEmployees($post){
         $employees = new EmployeesManager();
-        $employees->getEmployees($post);
-        return $employees;
+        $employee = $employees->getEmployees($post);
+        return $employee;
    }
+
+    function access1(){
+        if (isset($_SESSION["access"]) && $_SESSION["access"] <= 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function access2(){
+        if (isset($_SESSION["access"]) && $_SESSION["access"] <= 2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function access3(){
+        if (isset($_SESSION["access"]) && $_SESSION["access"] <= 3){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function access4(){
+        if (isset($_SESSION["access"]) && $_SESSION["access"] <= 4){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function access5(){
+        if (isset($_SESSION["access"]) && $_SESSION["access"] <= 5){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 //PATIENTS
     function addPatient($name, $firstname, $disease){

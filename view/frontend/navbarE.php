@@ -17,7 +17,7 @@
                 <li><a href="?action=home#home">Accueil</a></li>
                 <li><a href="?action=home#articles">Articles</a></li>
                 <li><a href="?action=articlesAdmin">Liste des articles</a></li>
-                <li><a href="?action=employees#employees">Employées</a></li>
+                <li><a href="?action=employees#employees">Employés</a></li>
                 <li><a href="?action=patients">Patients</a></li>
                 <li><a href="?action=channels">Salon</a></li>
                 <li><a href="?action=settings">Paramètres</a></li>

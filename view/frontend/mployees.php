@@ -13,8 +13,9 @@
                 </p>
                 <a href="#employeesGroup" class="button white">Voir</a>
 
-                <?php //condition sir l'employé est habilité et s'il est employé ?>
-                <a href="#addEmployee" class="button white" data-toggle="modal">Créer un nouveau compte employé</a>
+                <?php if (access1()) : ?>
+                    <a href="#addEmployee" class="button white" data-toggle="modal">Créer un nouveau compte employé</a>
+                <?php endif; ?>
 
             </div>
         </div>
@@ -48,21 +49,21 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <?php while($data = $dir->fetch(PDO::FETCH_ASSOC)) : var_dump($data); ?>
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+                                <?php while($data = $dir->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
                                 <?php endwhile; ?>
 
                             </div>
@@ -79,20 +80,23 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+
+                                <?php while($data = $sup->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -110,20 +114,22 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+                                <?php while($data = $med->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -141,20 +147,22 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+                                <?php while($data = $sag->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -173,20 +181,22 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+                                <?php while($data = $cad->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -205,20 +215,22 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+                                <?php while($data = $inf->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -236,20 +248,23 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+                                <?php while($data = $aid->fetch(PDO::FETCH_ASSOC)) : ?>
+
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -267,20 +282,22 @@
                             </div>
                             <div class="caption-desc" data-animation="animated fadeInDown">
 
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="single-team">
-                                        <div class="team-photo">
-                                            <img src="public/img/test1.jpg" alt="">
+                                <?php while($data = $bra->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="single-team">
+                                            <div class="team-photo">
+                                                <img src="public/img/test1.jpg" alt="">
+                                            </div>
+                                            <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
+                                            <h6>Co. Founder</h6>
+                                            <ul class="social-menu">
+                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <h4>JEMY SEDONCE</h4>
-                                        <h6>Co. Founder</h6>
-                                        <ul class="social-menu">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                <?php endwhile; ?>
 
                             </div>
                         </div>
@@ -324,7 +341,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form class="modal-content" action="" method="POST">
             <div class="modal-header">
-                Créer un espace de connexion employé
+                Créer un compte employé
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

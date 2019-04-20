@@ -1081,6 +1081,7 @@
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
+      <Collation>utf8mb4_unicode_ci</Collation>
     </column>
     <column id="268" parent="239" name="access">
       <Position>3</Position>

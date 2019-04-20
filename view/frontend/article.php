@@ -15,8 +15,9 @@
 
         <div class="navbar">
             <a class="btn btn-info navbar-right" href="?action=home#articles">Retour à l'écran d'accueil</a>
-
-            <a class="btn btn-success navbar-right" href="?action=article&id=<?= $_GET["id"]; ?>&article=edit">Modifier l'article</a>
+            <?php if (access3()) : ?>
+                <a class="btn btn-success navbar-right" href="?action=article&id=<?= $_GET["id"]; ?>&article=edit">Modifier l'article</a>
+            <?php endif; ?>
 
         </div>
 

@@ -12,7 +12,10 @@
                     Effectuez une recherche pour trouver le patient que vous cherchez.
                 </p>
                 <a href="#patientsGroup" class="button white">Voir</a>
-                <a href="#addPatient" class="button white" data-toggle="modal">Créer un nouveau compte patient</a>
+
+                <?php if (access2()) : ?>
+                    <a href="#addPatient" class="button white" data-toggle="modal">Créer un nouveau compte patient</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
