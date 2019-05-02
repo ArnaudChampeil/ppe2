@@ -19,7 +19,7 @@
 
                 <button type="submit" class="btn btn-success navbar-right">Valider les modifications</button>
 
-                <a class="btn btn-danger navbar-right" href="?action=article&id=<?= $_GET["id"]; ?>&article=deleteArticle">Supprimer</a>
+                <a class="btn btn-danger navbar-right" href="#delArticle" data-toggle="modal">Supprimer</a>
 
             </div>
 
@@ -34,6 +34,21 @@
         </div>
     </div>
 </form>
+
+<!-- MODAL VALIDATION SUPRESSION ARTICLE -->
+<div class="modal fade" id="delArticle" tabindex="-1" role="dialog" aria-labelledby="modalDelArticle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Etes vous certain de vouloir supprimer cette article ?
+            </div>
+            <div class="modal-body right">
+                <a href="?action=article&id=<?= $_GET["id"]; ?>&article=deleteArticle" type="submit" class="btn btn-danger">Supprimer</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php $content = ob_get_clean(); ?>
 

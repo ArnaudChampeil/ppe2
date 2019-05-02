@@ -16,7 +16,7 @@ class MessagesManager{
     }
     public function getMessages($id){
         $db = $this->manager->connectDb();
-        $messages = $db->prepare("SELECT a.firstname, m.dateCreation, m.content, m.id_account FROM accounts a, messages m WHERE a.id_account = m.id_account  AND m.id_channel = ? GROUP BY m.dateCreation");
+        $messages = $db->prepare("SELECT a.firstname, m.dateCreation, m.content, m.id_message, m.id_account FROM accounts a, messages m WHERE a.id_account = m.id_account  AND m.id_channel = ? GROUP BY m.dateCreation");
         $messages->execute(array($id));
 
         return $messages;
@@ -34,5 +34,10 @@ class MessagesManager{
 
         $message2 = $db->prepare("UPDATE accounts SET nbMessages = ? WHERE id_account = ?");
         $message2->execute(array($nbM["nbMessages"], $id_account));
+    }
+    public function unsetMessage($id){
+        $db = $this->manager->connectDb();
+        $message = $db->prepare("DELETE FROM messages WHERE id_message = ?");
+        $message->execute(array($id));
     }
 }

@@ -23,17 +23,20 @@
                         <div class="container">
 
                             <p>
-                                <?php if(isset($data["id_patient"])){ echo "Patient N°".$data["id_patient"]; } ?><br>
-                                <?php if(isset($data["login"])){ echo "Identifiant : ".$data["login"]; } ?><br>
+                                <?php if(isset($data["id_patient"])){ echo "Patient N°".$data["id_patient"]."<br>"; } ?>
+                                <?php if(isset($data["login"])){ echo "Identifiant : ".$data["login"]."<br>"; } ?>
                                 Email : <?= $data["email"]; ?><br>
-                                Maladie : <?= $data["disease"]; ?><br>
+                                <?php if(isset($data["login"])){ echo "Maladie : ".$data["disease"]."<br>"; } ?>
+                                <?php if(isset($data["post"])){ echo "Poste : ".$data["post"]."<br>"; } ?>
                                 <?= $data["nbMessages"]; ?> messages<br>
                             </p>
                         </div>
                     </div>
                     <footer class="blockquote-footer">
-                        Compte crée le
-                        <cite title="Source Title"><?= $data["creationDate"]; ?></cite>
+                        <?php if(isset($data["creationDate"])){
+                            echo "Compte crée le<cite title=\"Source Title\">".$data["creationDate"]."</cite>";
+                            }
+                        ?>
                         <a href="?action=settings&settings=edit" class=" navbar-right">Modifier</a>
                     </footer>
                 </blockquote>

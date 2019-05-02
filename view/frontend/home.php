@@ -109,7 +109,7 @@
                         </address>
                     </div>
                     <div class="col-xs-12 col-md-8">
-                        <form action="process.php" id="contact-form" method="post" class="contact-form">
+                        <form action="" id="" method="post" class="contact-form">
                             <div class="form-double">
                                 <input type="text" id="form-name" name="name" placeholder="Votre nom" class="form-control" required="required">
                                 <input type="email" id="form-email" name="email" class="form-control" placeholder="Adresse E-mail" required="required">
@@ -137,6 +137,7 @@
         <div class="container">
             <div class="row">
 
+                <a class="btn btn-default" href="?action=loginAdmin">Connexion Admin</a>
                 <a class="btn btn-default" href="?action=loginE">Connexion E</a>
                 <a class="btn btn-default" href="?action=loginP">Connexion P</a>
                 <a class="btn btn-default" href="#connexion" data-toggle="modal">Connexion</a>

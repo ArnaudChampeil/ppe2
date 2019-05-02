@@ -30,11 +30,11 @@ WHERE a.name LIKE '%$x%' OR a.firstname LIKE '%$x%' OR a.email LIKE '%$x%' OR p.
 
         return $patient;
     }
-    public function setPatient($name, $firstname, $login, $disease){
+    public function setPatient($name, $firstname, $password, $login, $disease){
         $db = $this->manager->connectDb();
 
         $patient1 = $db->prepare("INSERT INTO accounts SET name = ?, firstname = ?, email = ?, password = ?, nbMessages = ?");
-        $patient1->execute(array($name, $firstname, "Non renseigné", $name, 0));
+        $patient1->execute(array($name, $firstname, "Non renseigné", $password, 0));
 
         //Prendre l'id de la derniere entrée a account pour la mettre dans la table patient
         $id = $db->lastInsertId();
@@ -58,7 +58,7 @@ WHERE a.name LIKE '%$x%' OR a.firstname LIKE '%$x%' OR a.email LIKE '%$x%' OR p.
     }
     public function getPatientLogin($login){
          $db = $this->manager->connectDb();
-         $patient = $db->prepare("SELECT a.id_account, a.name, a.firstname, p.id_patient, p.login, p.creationDate FROM accounts a INNER JOIN patients p ON a.id_account =p.id_patient WHERE login = ?");
+         $patient = $db->prepare("SELECT a.id_account, a.name, a.firstname, p.id_patient, p.login, p.creationDate FROM accounts a INNER JOIN patients p ON a.id_account = p.id_account WHERE p.login = ?");
          $patient->execute(array($login));
 
         return $patient->fetch(PDO::FETCH_ASSOC);

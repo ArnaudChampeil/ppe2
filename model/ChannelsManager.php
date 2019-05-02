@@ -17,11 +17,17 @@ class ChannelsManager{
 
     public function setChannel($name, $description){
         $db = $this->manager->connectDb();
-        $article = $db->prepare("INSERT INTO channels(name, description, dateCreation) VALUES(:name, :description, NOW())");
+        $channel = $db->prepare("INSERT INTO channels(name, description, dateCreation) VALUES(:name, :description, NOW())");
 
-        $article->execute(array(
+        $channel->execute(array(
             "name" => $name,
             "description" => $description
         ));
+    }
+
+    public function unsetChannel($id){
+        $db = $this->manager->connectDb();
+        $channel = $db->prepare("DELETE FROM channels WHERE id_channel = ?");
+        $channel->execute(array($id));
     }
 }

@@ -27,16 +27,4 @@ class AccountsManager{
             "nbMessages" => 0
         ));
     }
-
-    public function setAccountP($name, $firstname){
-        $db = $this->manager->connectDb();
-        $article = $db->prepare("INSERT INTO accounts(name, firstname, email, nbMessages) VALUES(:name, :firstname, :email, :nbMessages)");
-
-        $article->execute(array(
-            "name" => $name,
-            "firstname" => $firstname,
-            "email" => "Non renseigné",
-            "nbMessages" => 0
-        ));
-    }
 }

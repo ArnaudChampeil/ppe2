@@ -42,7 +42,7 @@
                     <div class="v-center">
                         <div class="container">
                             <div class="caption-title" data-animation="animated fadeInUp">
-                                <h2>Direction</h2>
+                                <h2>La direction</h2>
                                 <p>
                                     Ils assurent la gestion administrative de l'hôpital.
                                 </p>
@@ -53,15 +53,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -85,15 +79,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -118,15 +106,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -151,15 +133,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -185,15 +161,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -219,15 +189,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -253,15 +217,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -286,15 +244,9 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/test1.jpg" alt="">
+                                                <img src="public/img/avatar.png" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
-                                            <h6>Co. Founder</h6>
-                                            <ul class="social-menu">
-                                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 <?php endwhile; ?>

@@ -21,9 +21,8 @@
                     <blockquote class="blockquote mb-0">
                         <form method="POST">
 
-                            <?php if(isset($data["id_patient"])){ echo "Patient N°".$data["id_patient"]; } ?><br>
-
-                            <?php if(isset($data["login"])){ echo "Identifiant : ".$data["login"]; } ?><br>
+                            <?php if(isset($data["id_patient"])){ echo "Patient N°".$data["id_patient"]."<br>"; } ?>
+                            <?php if(isset($data["login"])){ echo "Identifiant : ".$data["login"]."<br>"; } ?>
 
                             <div class="input-group flex-nowrap">
                                 Mot de passe
@@ -35,12 +34,17 @@
                                 <input type="email" name="email" class="form-control" value="<?= $data["email"]; ?>" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
 
-                            Maladie : <?= $data["disease"]; ?><br>
+                            <?php if(isset($data["login"])){ echo "Maladie : ".$data["disease"]."<br>"; } ?>
+
                             <?= $data["nbMessages"]; ?> messages<br>
 
                             <footer class="blockquote-footer">
-                                Compte crée le <cite title="Source Title"><?= $data["creationDate"]; ?></cite>
-                                <button type="submit" class="btn btn-primary navbar-right">Valider les modifications</button>
+                                <?php if(isset($data["creationDate"])){
+                                    echo "Compte crée le<cite title=\"Source Title\">".$data["creationDate"]."</cite>";
+                                }
+                                ?>
+                                <a href="?action=settings" class="btn btn-primary navbar-right">Revenir aux paramètres</a>
+                                <button type="submit" class="btn btn-success navbar-right">Valider les modifications</button>
                             </footer>
                         </form>
                     </blockquote>

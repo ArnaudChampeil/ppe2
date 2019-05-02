@@ -12,7 +12,6 @@
 
 <div class="section-padding gray-bg" id="channelsGroup">
     <div class="container">
-
         <?php if (access3()) : ?>
             <button type="button" class="btn btn-block btn-success" data-toggle="collapse" data-target="#collapseAddArticle" aria-expanded="true" aria-controls="collapseOne">Ecrire un nouvel article</button>
         <?php endif; ?>

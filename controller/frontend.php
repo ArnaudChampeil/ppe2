@@ -9,20 +9,18 @@ require_once "model/ChannelsManager.php";
 require_once "model/MessagesManager.php";
 
 function navbarEmployees(){
-    if(isset($_SESSION['id_account'])){
+    if(isset($_SESSION['id_account']) && isset($_SESSION['access'])){
         require_once "view/frontend/navbarE.php";
     }
 }
 function navbarPatitents(){
-    if(isset($_SESSION['id_patient'])){
+    if(isset($_SESSION['id_patient']) && isset($_SESSION['login'])){
         require_once "view/frontend/navbarP.php";
     }
 }
-function loginEmployee(){
+function loginAdmin(){
     $_SESSION['id_account'] = 1;
-}
-function loginPatientA(){
-    $_SESSION['id_patient'] = 1;
+    $_SESSION["access"] = 0;
 }
 function logout(){
     session_destroy();
@@ -100,6 +98,9 @@ function randomString($size)
        $email = htmlspecialchars($email);
        $post = htmlspecialchars($post);
 
+       $password = $name;
+       $password = password_hash($password, PASSWORD_DEFAULT);
+
        switch ($post){
            case "Direction" :
                $access = 1;
@@ -128,13 +129,40 @@ function randomString($size)
        }
 
        $employee = new EmployeesManager();
-       $employee->setEmployee($name, $firstname, $email, $post, $access);
+       $employee->setEmployee($name, $firstname, $email, $password, $post, $access);
    }
    function seeEmployees($post){
         $employees = new EmployeesManager();
         $employee = $employees->getEmployees($post);
         return $employee;
    }
+    function verifyEmailEmployee($email, $password){
+        $email = htmlspecialchars($email);
+        $password = htmlspecialchars($password);
+
+        $employee = new EmployeesManager();
+        $data = $employee->verifyEmployee($email);
+        if(isset($data["email"]) && password_verify($password, $data["password"])){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function loginEmployee($email){
+        $employee = new EmployeesManager();
+        $data = $employee->getEmployeeEmail($email);
+
+        $_SESSION["id_account"] = $data["id_account"];
+        $_SESSION["name"] = $data["name"];
+        $_SESSION["firstname"] = $data["firstname"];
+        $_SESSION["post"] = $data["post"];
+        $_SESSION["access"] = $data["access"];
+
+        // ECRITURES DES COOKIES POUR LES PROCHAINES CONNEXIONS
+        setcookie('email', $_POST['email'], time() + 365*24*3600, null, null, false, true);
+        setcookie('password', $_POST['passwordE'], time() + 365*24*3600, null, null, false, true);
+    }
 
     function access1(){
         if (isset($_SESSION["access"]) && $_SESSION["access"] <= 1){
@@ -178,6 +206,9 @@ function randomString($size)
         $firstname = htmlspecialchars($firstname);
         $disease = htmlspecialchars($disease);
 
+        $password = $name;
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
         $patient = new PatientsManager();
         $login = randomString(10);
         $loginPatient = $patient->getLogin($login);
@@ -186,7 +217,7 @@ function randomString($size)
             $login = randomString(10);
         }
 
-        $patient->setPatient($name, $firstname, $login, $disease);
+        $patient->setPatient($name, $firstname, $password, $login, $disease);
     }
     function seePatients(){// NE PREND LES INFORMATIONS QUE DE GETPATIENTS
         $patients = new PatientsManager();
@@ -202,15 +233,11 @@ function randomString($size)
     }
 
     function verifyLoginPatient($login, $password){
+        $login = htmlspecialchars($login);
+        $password = htmlspecialchars($password);
+
         $patient = new PatientsManager();
         $data = $patient->verifyPatient($login);
-
-        /*
-        if(isset($data["login"]) && password_verify($password, $data["password"]) && $password = $data["name"] ){
-
-            return $login = true;
-
-        }else */
 
         if(isset($data["login"]) && password_verify($password, $data["password"])){
             return true;
@@ -225,7 +252,7 @@ function randomString($size)
 
         $_SESSION["id_account"] = $data["id_account"];
         $_SESSION["name"] = $data["name"];
-        $_SESSION["firstName"] = $data["firstName"];
+        $_SESSION["firstname"] = $data["firstname"];
         $_SESSION["id_patient"] = $data["id_patient"];
         $_SESSION["login"] = $data["login"];
         $_SESSION["creationDate"] = $data["creationDate"];
@@ -247,6 +274,10 @@ function randomString($size)
         $channel = new ChannelsManager();
         $channel->setChannel($name, $description);
     }
+    function deleteChannel($id){
+        $channel = new ChannelsManager();
+        $channel->unsetChannel($id);
+    }
 
 //TCHAT
     function seeMessages($id){
@@ -259,11 +290,24 @@ function randomString($size)
         $message = new MessagesManager();
         return $message->setMessage($content, $id_account, $id_channel);
     }
+    function deleteMessage($id){
+        $message = new MessagesManager();
+        $message->unsetMessage($id);
+    }
 
 //PARAMETRES
     function seeSettings($id){
         $patient = new PatientsManager();
-        return $patient->getPatient($id);
+        $data = $patient->getPatient($id);
+
+        if(empty($data)){
+            //SI LA VARIABLE EST VIDE ALORS LA REMPLIR AVEC LES INFORMATIONS EMPLOYE
+            $employee = new EmployeesManager();
+            return $employee->getEmployee($id);
+        }else{
+            return $patient->getPatient($id);
+        }
+
     }
     function updateSettings($password, $email, $id){
         $password = htmlspecialchars($password);
