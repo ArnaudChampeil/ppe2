@@ -22,9 +22,22 @@
     </div>
 </header>
 
-
 <section class="section-padding gray-bg" id="employeesGroup">
     <div class="container">
+        <?php if(!empty($_SESSION["error"])) : ?>
+            <div class="alert alert-danger">
+                <p>Vous n'avez pas rempli l'inscription correctement</p>
+                <ul>
+                    <?php foreach($_SESSION['error'] as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php
+        endif; ?>
+        <?php if(!empty($_SESSION["success"])) : ?>
+            <div class="alert alert-success"><?= $_SESSION["success"]["account"]; ?></div>
+        <?php endif; ?>
 
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
@@ -53,7 +66,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -79,7 +92,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -106,7 +119,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -133,7 +146,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -161,7 +174,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -189,7 +202,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -217,7 +230,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -244,7 +257,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3">
                                         <div class="single-team">
                                             <div class="team-photo">
-                                                <img src="public/img/avatar.png" alt="">
+                                                <img src="public/img/employees/imgEmployee<?= $data["id_account"].$data["extension"]; ?>" alt="">
                                             </div>
                                             <h4><?= $data["name"].' '.$data["firstname"]; ?> </h4>
                                         </div>
@@ -291,7 +304,7 @@
 <!-- MODAL CREATION EMPLOYE -->
 <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="modaladdEmployee" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form class="modal-content" action="" method="POST">
+        <form class="modal-content" action="" method="POST" enctype="multipart/form-data">
             <div class="modal-header">
                 Créer un compte employé
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -301,15 +314,15 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="name">Nom</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Entrer le nom de l'employé">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Entrer le nom de l'employé" required>
                 </div>
                 <div class="form-group">
                     <label for="firstname">Prénom</label>
-                    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Entrer le prénom de l'employé">
+                    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Entrer le prénom de l'employé" required>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Entrer l'e-mail de l'employé">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Entrer l'e-mail de l'employé" required>
                 </div>
                 <div class="form-group">
                     <label for="post">Poste</label>
@@ -324,6 +337,9 @@
                         <option value="Direction">Direction</option>
                     </select>
                 </div>
+                <label for="pic">Photo</label>
+                <input type="hidden" name="MAX_FILE_SIZE" value="600000" /> <!-- Limite 600ko  FONCTIONNE PAS -->
+                <input type="file" name="imgEmployee" class="" placeholder="Upload la photo de l'image" id="pic" required>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="button">Créer</button>
@@ -331,9 +347,6 @@
         </form>
     </div>
 </div>
-
-
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

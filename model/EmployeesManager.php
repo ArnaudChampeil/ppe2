@@ -5,7 +5,7 @@ class EmployeesManager extends AccountsManager{
 
     public function getEmployees($post){
         $db = $this->manager->connectDb();
-        $employees = $db->prepare("SELECT a.name, a.firstname FROM accounts a INNER JOIN employees e ON a.id_account = e.id_account WHERE e.post = ? GROUP BY a.id_account DESC");
+        $employees = $db->prepare("SELECT a.id_account, a.name, a.firstname, i.extension FROM accounts a INNER JOIN employees e ON a.id_account = e.id_account INNER JOIN display d ON a.id_account = d.id_account INNER JOIN images i ON d.id_image = i.id_image WHERE e.post = ? GROUP BY a.id_account DESC");
         $employees->execute(array($post));
 
         return $employees;
@@ -27,6 +27,19 @@ class EmployeesManager extends AccountsManager{
 
         $employee2 = $db->prepare("INSERT INTO employees SET id_account = ?, post = ?, access = ?");
         $employee2->execute(array($id, $post, $access));
+    }
+
+    public function setEmployeeReturnId($name, $firstname, $email, $password, $post, $access){
+        $db = $this->manager->connectDb();
+        $employee = $db->prepare("INSERT INTO accounts SET name = ?, firstname = ?, email = ?, password = ?, nbMessages = ?");
+        $employee->execute(array($name, $firstname, $email, $password, 0));
+
+        $id = $db->lastInsertId();
+
+        $employee2 = $db->prepare("INSERT INTO employees SET id_account = ?, post = ?, access = ?");
+        $employee2->execute(array($id, $post, $access));
+
+        return $id;
     }
 
     public function verifyEmployee($email){

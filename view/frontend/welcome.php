@@ -11,7 +11,7 @@
             <div class="col-xs-12 col-md-7 header-text">
                 <h2>Bienvenue dans l'hôpital d'Assas</h2>
                 <p>
-                    Retrouvez tout l'actualité de l'hôpital, connectez vous avec vos camarades de chambres
+                    Retrouvez toute l'actualité de l'hôpital, connectez vous avec vos camarades de chambres
                 </p>
                 <a href="?action=home" class="button white">Entrer</a>
             </div>

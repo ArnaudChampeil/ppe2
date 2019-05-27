@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="ppe2@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.14">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.15">
     <root id="1">
       <ServerVersion>5.7.19</ServerVersion>
       <DefaultEngine>MyISAM</DefaultEngine>
@@ -1061,7 +1061,6 @@
     <column id="264" parent="238" name="id_article">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="265" parent="238" name="id_image">
@@ -1070,194 +1069,199 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="239" name="id_account">
+    <column id="266" parent="238" name="id_account">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="267" parent="239" name="id_account">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="239" name="post">
+    <column id="268" parent="239" name="post">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8mb4_unicode_ci</Collation>
     </column>
-    <column id="268" parent="239" name="access">
+    <column id="269" parent="239" name="access">
       <Position>3</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="240" name="id_histo">
+    <column id="270" parent="240" name="id_histo">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="240" name="id_message">
+    <column id="271" parent="240" name="id_message">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="240" name="content">
+    <column id="272" parent="240" name="content">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8mb4_unicode_ci</Collation>
     </column>
-    <column id="272" parent="240" name="dateCreation">
+    <column id="273" parent="240" name="dateCreation">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="240" name="id_account">
+    <column id="274" parent="240" name="id_account">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="240" name="id_channel">
+    <column id="275" parent="240" name="id_channel">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="275" parent="240" name="PRIMARY">
+    <key id="276" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_histo</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="276" parent="241" name="id_image">
+    <column id="277" parent="241" name="id_image">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="241" name="extension">
+    <column id="278" parent="241" name="extension">
       <Position>2</Position>
       <DataType>varchar(25)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="278" parent="241" name="PRIMARY">
+    <key id="279" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_image</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="279" parent="242" name="id_message">
+    <column id="280" parent="242" name="id_message">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="242" name="content">
+    <column id="281" parent="242" name="content">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_unicode_ci</Collation>
     </column>
-    <column id="281" parent="242" name="dateCreation">
+    <column id="282" parent="242" name="dateCreation">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="242" name="id_account">
+    <column id="283" parent="242" name="id_account">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="242" name="id_channel">
+    <column id="284" parent="242" name="id_channel">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="284" parent="242" name="PRIMARY">
+    <key id="285" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_message</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="285" parent="243" name="id_account">
+    <column id="286" parent="243" name="id_account">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="286" parent="243" name="id_patient">
+    <column id="287" parent="243" name="id_patient">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="243" name="login">
+    <column id="288" parent="243" name="login">
       <Position>3</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_unicode_ci</Collation>
     </column>
-    <column id="288" parent="243" name="disease">
+    <column id="289" parent="243" name="disease">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="289" parent="243" name="creationDate">
+    <column id="290" parent="243" name="creationDate">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="290" parent="243" name="PRIMARY">
+    <key id="291" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_patient</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="291" parent="244" name="id_account">
+    <column id="292" parent="244" name="id_account">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="292" parent="244" name="name">
+    <column id="293" parent="244" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="293" parent="244" name="firstname">
+    <column id="294" parent="244" name="firstname">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="294" parent="244" name="email">
+    <column id="295" parent="244" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="295" parent="244" name="password">
+    <column id="296" parent="244" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="296" parent="244" name="nbMessages">
+    <column id="297" parent="244" name="nbMessages">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="297" parent="244" name="post">
+    <column id="298" parent="244" name="post">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="298" parent="244" name="access">
+    <column id="299" parent="244" name="access">
       <Position>8</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>

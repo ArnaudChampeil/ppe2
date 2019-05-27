@@ -13,6 +13,16 @@
 
     <div class="section-padding gray-bg" id="Article<?= $_GET["id"]; ?>">
         <div class="container">
+            <?php if(!empty($_SESSION["error"])) : ?>
+                <div class="alert alert-danger">
+                    <p>Vous n'avez pas modifié l'article correctement</p>
+                    <ul>
+                        <?php foreach($_SESSION['error'] as $error): ?>
+                            <li><?= $error; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
 
             <div class="navbar">
                 <a class="btn btn-info navbar-right" href="?action=home#articles">Retour à l'écran d'accueil</a>

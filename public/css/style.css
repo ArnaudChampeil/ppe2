@@ -399,10 +399,9 @@ input:-webkit-autofill:focus {
 }
 
 .screen-slider .item {
-    background: url('public/img/mobile2.png') no-repeat scroll center center / auto 100%;
-    padding: 56px 22px;
     display: inline-block;
     margin: auto;
+    border: 5px solid whitesmoke;
 }
 
 .screen-slider.owl-carousel .owl-item {

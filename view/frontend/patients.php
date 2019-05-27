@@ -24,6 +24,21 @@
 <section class="section-padding gray-bg" id="patientsGroup">
     <div class="container">
 
+        <?php if(!empty($_SESSION["error"])) : ?>
+            <div class="alert alert-danger">
+                <p>Vous n'avez pas rempli l'inscription correctement</p>
+                <ul>
+                    <?php foreach($_SESSION['error'] as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php
+        endif; ?>
+        <?php if(!empty($_SESSION["success"])) : ?>
+            <div class="alert alert-success"><?= $_SESSION["success"]["account"]; ?></div>
+        <?php endif; ?>
+
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
                 <div class="page-title">

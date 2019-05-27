@@ -11,6 +11,7 @@ try {
                 if(verifyLoginPatient($_POST["login"],$_POST["passwordP"])){
                     loginPatient($_POST["login"]);
                     header("Location: index.php?action=home");
+                    exit();
                 }
             }
             //CONNEXION EMPLOYE
@@ -18,6 +19,7 @@ try {
                 if(verifyEmailEmployee($_POST["email"],$_POST["passwordE"])){
                     loginEmployee($_POST["email"]);
                     header("Location: index.php?action=home");
+                    exit();
                 }
             }
             $articles = see5Articles();
@@ -34,19 +36,25 @@ try {
                 if ($_GET["article"] == "edit") {
                     //MODIFICATION
                     if (isset($_POST["title"]) && isset($_POST["content"]) && isset($_POST["link"]) && isset($_GET["id"])) {
-                        editArticle($_POST["title"], $_POST["content"], $_POST["link"], $_GET["id"]);
-                        header("Location: index.php?action=article&id=" . $_GET["id"]);
+                        if (verifyEditArticle($_POST["title"], $_POST["content"], $_POST["link"])){
+                            editArticle($_POST["title"], $_POST["content"], $_POST["link"], $_GET["id"]);
+                            header("Location: index.php?action=article&id=" . $_GET["id"]);
+                            exit();
+                        }
                     }
                     require_once "view/frontend/articleEdit.php";
+                    unset($_SESSION["error"]);
                     exit();
                 }
                 //SUPPRESSION
                 if ($_GET["article"] == "deleteArticle") {
                     deleteArticle($_GET["id"]);
                     header("Location: index.php?action=home");
+                    exit();
                 }
             }
             require_once "view/frontend/article.php";
+            unset($_SESSION["success"]);
             exit();
         }
         if(!empty($_SESSION["id_account"])){
@@ -56,17 +64,21 @@ try {
                 if(isset($_POST["title"]) && isset($_POST["content"]) && isset($_POST["link"]) && isset($_FILES["imgArticle"]) && access3()){
                     addArticle($_POST["title"], $_POST["content"], $_POST["link"], $_SESSION["id_account"], $_FILES);
                     header("Location: index.php?action=articlesAdmin");
+                    exit();
                 }
                 $articles = seeArticles();
                 require_once "view/frontend/articlesAdmin.php";
+                unset($_SESSION["error"]);
+                unset($_SESSION["success"]);
                 exit();
             }
             //PAGE EMPLOYES ************** "EMPLOYEES.PHP" N'EST PAS RECONNU COMME UN FICHIER PHP, LE FICHIER EST NOMMEE "MPLOYEES.PHP" POUR LE MOMENT **************
             if ($_GET["action"] == "employees") {
                 //AJOUT D'EMPLOYEES
-                if(isset($_POST["name"]) && isset($_POST["firstname"]) && isset($_POST["email"]) && isset($_POST["post"]) && access1()){
-                    addEmployee($_POST["name"], $_POST["firstname"], $_POST["email"], $_POST["post"]);
+                if(isset($_POST["name"]) && isset($_POST["firstname"]) && isset($_POST["email"]) && isset($_POST["post"]) && isset($_FILES["imgEmployee"]) && access1()){
+                    addEmployee($_POST["name"], $_POST["firstname"], $_POST["email"], $_POST["post"], $_FILES);
                     header("Location: index.php?action=employees");
+                    exit();
                 }
                 $dir = seeEmployees("Direction");
                 $sup = seeEmployees("Cadre supérieur de santé");
@@ -77,6 +89,8 @@ try {
                 $aid = seeEmployees("Aide-soignant");
                 $bra = seeEmployees("Brancardier");
                 require_once "view/frontend/mployees.php";
+                unset($_SESSION["error"]);
+                unset($_SESSION["success"]);
                 exit();
             }
             //PAGE PATIENTS
@@ -85,43 +99,55 @@ try {
                 if(isset($_POST["name"]) && isset($_POST["firstname"]) && isset($_POST["disease"]) && access2()){
                     addPatient($_POST["name"], $_POST["firstname"], $_POST["disease"]);
                     header("Location: index.php?action=patients");
+                    exit();
                 }
                 //RECHERCHE D'UN PATIENT
                 if(isset($_POST["search"])){
                     $patients = searchPatients($_POST["search"]);
                     require_once "view/frontend/patients.php";
+                    unset($_SESSION["error"]);
+                    unset($_SESSION["success"]);
                     exit();
                 }else{
                     $patients = seePatients();
                     require_once "view/frontend/patients.php";
+                    unset($_SESSION["error"]);
+                    unset($_SESSION["success"]);
                     exit();
                 }
             }
             //PAGE SALONS
             if ($_GET["action"] == "channels") {
+                //AJOUT SALON
                 if(isset($_POST["name"]) && isset($_POST["description"]) && access4()){
                     addChannel($_POST["name"], $_POST["description"]);
                     header("Location: index.php?action=channels#channelsGroup");
+                    exit();
                 }
                 //SUPPRESSION
                 if (isset($_GET["channel"]) == "deleteChannel" && access4()){
                     deleteChannel($_GET["id_channel"]);
                     header("Location: index.php?action=channels#channelsGroup");
+                    exit();
                 }
                 $channels = seeChannels();
                 require_once "view/frontend/channels.php";
+                unset($_SESSION["success"]);
                 exit();
             }
-            //PAGE TCHAT
+            //PAGE CHAT
             if ($_GET["action"] == "channel") {
+                //AJOUT CHAT
                 if(isset($_POST["message"])){
                     addMessage($_POST["message"], $_SESSION["id_account"], $_GET["id_channel"]);
                     header("Location: index.php?action=channel&id_channel=".$_GET["id_channel"]);
+                    exit();
                 }
                 //SUPPRESSION
                 if (isset($_GET["channel"]) == "deleteMessage" && access4()){//PROBLEME D'ID LORS DE LA SUPPRESSION DES MESSAGES SUR LE MODAL
                     deleteMessage($_GET["id_message"]);
                     header("Location: index.php?action=channel&id_channel=".$_GET["id_channel"]);
+                    exit();
                 }
                 $message = seeMessages($_GET["id_channel"]);
                 require_once "view/frontend/channel.php";
@@ -132,6 +158,7 @@ try {
                 if (isset($_POST["password"]) && isset($_POST["email"])){
                     updateSettings($_POST["password"], $_POST["email"], $_SESSION["id_account"]);
                     header("Location: index.php?action=settings");
+                    exit();
                 }
                 $data = seeSettings($_SESSION["id_account"]);
                 if(isset($_GET["settings"])  == "edit"){
@@ -148,12 +175,14 @@ try {
         if ($_GET["action"] == "logout") {
             logout();
             header("Location: index.php");
+            exit();
         }
 
         //************** CONNEXION ADMIN TEMPORAIRE **************
         if ($_GET["action"] == "loginAdmin") {
             loginAdmin();
             header("Location: index.php?action=home");
+            exit();
         }
     }else{
         //PAGE DE BIENVENUE

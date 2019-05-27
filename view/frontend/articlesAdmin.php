@@ -12,6 +12,22 @@
 
 <div class="section-padding gray-bg" id="channelsGroup">
     <div class="container">
+
+        <?php if(!empty($_SESSION["error"])) : ?>
+            <div class="alert alert-danger">
+                <p>Vous n'avez pas rempli l'article correctement</p>
+                <ul>
+                    <?php foreach($_SESSION['error'] as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php
+        endif; ?>
+        <?php if(!empty($_SESSION["success"])) : ?>
+            <div class="alert alert-success"><?= $_SESSION["success"]["article"]; ?></div>
+        <?php endif; ?>
+
         <?php if (access3()) : ?>
             <button type="button" class="btn btn-block btn-success" data-toggle="collapse" data-target="#collapseAddArticle" aria-expanded="true" aria-controls="collapseOne">Ecrire un nouvel article</button>
         <?php endif; ?>
@@ -21,8 +37,9 @@
 
                 <textarea name="content" rows="20" class="form-control" placeholder="Contenu de l'article" required></textarea>
 
-                <input type="hidden" name="MAX_FILE_SIZE" value="600000" /> <!-- Limite 600ko  FONCTIONNE PAS -->
                 <input type="text" name="link" class="form-control" placeholder="Lien de l'article (si l'article vient d'un autre site)">
+
+                <input type="hidden" name="MAX_FILE_SIZE" value="600000" /> <!-- Limite 600ko  FONCTIONNE PAS -->
                 <input type="file" name="imgArticle" class="form-control" placeholder="Upload la photo de l'image" required>
 
                 <button type="submit" class="button">Publier</button>

@@ -19,6 +19,10 @@
 <div class="section-padding gray-bg" id="channelsGroup">
     <div class="container">
 
+        <?php if(!empty($_SESSION["success"])) : ?>
+            <div class="alert alert-success"><?= $_SESSION["success"]["channel"]; ?></div>
+        <?php endif; ?>
+
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
                 <div class="page-title">

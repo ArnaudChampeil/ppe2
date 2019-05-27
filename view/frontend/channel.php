@@ -26,7 +26,7 @@
                             <a href="#delMessage" class="badge head-message" data-toggle="modal">Supprimer</a>
                         <?php endif; ?>
                     </div>
-                    <?php/*
+                    <?php /*
                 }else{
                     ?>
                     <div class="message-right">
@@ -36,8 +36,7 @@
                         </div>
                         <div><a href="#delMessage" class="badge head-message" data-toggle="modal">Supprimer</a></div>
                     </div>
-                    <?php
-                }*/
+                    <?php*/
                 ?>
                 <?= $data["id_message"]; // L'ID N'AUGMENTE PLUS APRES LE BLOC DU MODAL ?>
                 <!-- MODAL VALIDATION SUPRESSION MESSAGE -->

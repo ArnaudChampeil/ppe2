@@ -8,13 +8,12 @@
         <div class="row v-center">
             <div class="col-xs-12 col-md-7 header-text">
                 <h2>Hôpital d'Assas</h2>
-                <p>L'hôpital d'Assas est un établissement privé ayant son propre réseau de communication et et son propre système de relation interpatients</p>
+                <p>L'hôpital d'Assas est un établissement privé ayant son propre réseau de communication et son propre système de relation interpatients</p>
             </div>
             <div class="hidden-xs hidden-sm col-md-5 text-right">
                 <div class="screen-box screen-slider">
                     <div class="item">
                         <img src="public/img/chu1.jpg" alt="Photo 1">
-
                     </div>
                     <div class="item">
                         <img src="public/img/chu2.jpg" alt="Photo 2">

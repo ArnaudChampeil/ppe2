@@ -49,42 +49,79 @@ function randomString($size)
         $content = nl2br(htmlspecialchars($content));
         $link = htmlspecialchars($link);
 
-        $article = new ArticlesManager();
-        //Retourne l'id de l'article pour l'imagede l'article
-        $idArticle = $article->setArticleReturnId($title, $content, $link, $id_account);
+        //VERIFICATION AVANT ENREGISTREMENT
+        if(empty($title) OR !preg_match('/^[A-Za-z0-9]+$/',$title)){
+            $_SESSION["error"]["title"] = "Le titre de l'article n'est pas valide.";
+        }
+        if(empty($content)){
+            $_SESSION["error"]["content"] = "Le contenu de l'article est vide.";
+        }
+        if(empty($link) OR !filter_var($link, FILTER_VALIDATE_URL)){
+            $_SESSION["error"]["link"] = "Le lien de l'article n'est pas valide.";
+        }
 
-        //Récupère le nom du fichier
-        $file_name = $files["imgArticle"]["name"];
-        //Récupère l'extension du fichier
-        $file_extension = strrchr($file_name, '.');
-        //Déplace le fichier du dossier temporaire au serveur
-        $file_tmp_name = $_FILES["imgArticle"]["tmp_name"];
-        $file_dest = "public/img/articles/imgArticle".$idArticle.$file_extension;
-        //Tableau des extension autorisée
-        $extension_autorisees = array(".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG", ".gif", ".GIF");
+        if(empty($_SESSION["error"])){
+            //Récupère le nom du fichier
+            $file_name = $files["imgArticle"]["name"];
+            //Récupère l'extension du fichier
+            $file_extension = strrchr($file_name, '.');
+            //Tableau des extension autorisée
+            $extension_autorisees = array(".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG", ".gif", ".GIF");
 
-        //Insertion de l'extension de l'image et retourne l'id de l'entrée
-        $image = new ImagesManager();
-        $idImage = $image->setImageReturnId($file_extension);
+            if (in_array($file_extension, $extension_autorisees)){
 
-        //Insertion des ID de l'article et de l'image dans la table Display(relation N,N)
-        $display = new DisplayManager();
-        $display->setDisplay($idArticle, $idImage);
+                $article = new ArticlesManager();
+                //Retourne l'id de l'article pour l'image de l'article
+                $idArticle = $article->setArticleReturnId($title, $content, $link, $id_account);
 
-        if (in_array($file_extension, $extension_autorisees)){
-            move_uploaded_file($file_tmp_name, $file_dest);
-            $_SESSION["flash"]["succes"] = "Article posté avec succès !"; //NON FONCTIONNELLE
+                //Déplace le fichier du dossier temporaire au serveur
+                $file_tmp_name = $_FILES["imgArticle"]["tmp_name"];
+                $file_dest = "public/img/articles/imgArticle".$idArticle.$file_extension;
+
+                //Insertion de l'extension de l'image et retourne l'id de l'entrée
+                $image = new ImagesManager();
+                $idImage = $image->setImageReturnId($file_extension);
+
+                //Insertion des ID de l'article et de l'image dans la table Display(relation N,N)
+                $display = new DisplayManager();
+                $display->setDisplayArticle($idArticle, $idImage);
+
+                move_uploaded_file($file_tmp_name, $file_dest);
+                $_SESSION["success"]["article"] = "Article posté avec succès !";
+            }else{
+                $_SESSION["error"]["img"] = "L'image de l'article n'est pas valide.";
+            }
+        }
+
+    }
+
+    function verifyEditArticle($title, $content, $link){
+        //VERIFICATION AVANT ENREGISTREMENT
+        if (empty($title) OR !preg_match('/^[A-Za-z0-9]+$/', $title)) {
+            $_SESSION["error"]["title"] = "Le titre de l'article n'est pas valide.";
+        }
+        if (empty($content)) {
+            $_SESSION["error"]["content"] = "Le contenu de l'article est vide.";
+        }
+        if (empty($link) OR !filter_var($link, FILTER_VALIDATE_URL)) {
+            $_SESSION["error"]["link"] = "Le lien de l'article n'est pas valide.";
+        }
+
+        if (empty($_SESSION["error"])) {
+            return true;
         }else{
-            $_SESSION["flash"]["error"] = "L'image ne s'est pas téléchargé."; //NON FONCTIONNELLE
+            return false;
         }
     }
-    function editArticle($title, $content, $link, $id_article){
+    function editArticle($title, $content, $link, $id_article)
+    {
         $title = htmlspecialchars($title);
         $content = nl2br(htmlspecialchars($content));
         $link = htmlspecialchars($link);
 
         $article = new ArticlesManager();
         $article->setUpdateArticle($title, $content, $link, $id_article);
+        $_SESSION["success"]["article"] = "Article modifié avec succès !";
     }
     function deleteArticle($id_article){
         $article = new ArticlesManager();
@@ -92,7 +129,7 @@ function randomString($size)
     }
 
 //EMPLOYES
-   function addEmployee($name, $firstname, $email, $post){
+   function addEmployee($name, $firstname, $email, $post, $files){
        $name = htmlspecialchars($name);
        $firstname = htmlspecialchars($firstname);
        $email = htmlspecialchars($email);
@@ -128,8 +165,50 @@ function randomString($size)
                break;
        }
 
-       $employee = new EmployeesManager();
-       $employee->setEmployee($name, $firstname, $email, $password, $post, $access);
+       //VERIFICATION AVANT ENREGISTREMENT
+       if(empty($name) OR !preg_match("/^[A-Za-z' -]+$/",$name)){
+           $_SESSION["error"]["name"] = "Le nom de l'employé n'est pas valide.";
+       }
+       if(empty($firstname) OR !preg_match("/^[A-Za-z' -]+$/",$firstname)){
+           $_SESSION["error"]["firstname"] = "Le prenom de l'employé n'est pas valide.";
+       }
+       if(empty($email) OR !filter_var($email, FILTER_VALIDATE_EMAIL)){
+           $_SESSION["error"]["email"] = "L'email n'est pas valide.";
+       }
+
+       if(empty($_SESSION["error"])){
+           //Récupère le nom du fichier
+           $file_name = $files["imgEmployee"]["name"];
+           //Récupère l'extension du fichier
+           $file_extension = strrchr($file_name, '.');
+           //Tableau des extension autorisée
+           $extension_autorisees = array(".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG", ".gif", ".GIF");
+
+           if (in_array($file_extension, $extension_autorisees)){
+
+               $employee = new EmployeesManager();
+               $idAccount = $employee->setEmployeeReturnId($name, $firstname, $email, $password, $post, $access);
+
+               //Déplace le fichier du dossier temporaire au serveur
+               $file_tmp_name = $_FILES["imgEmployee"]["tmp_name"];
+               $file_dest = "public/img/employees/imgEmployee".$idAccount.$file_extension;
+
+               //Insertion de l'extension de l'image et retourne l'id de l'entrée
+               $image = new ImagesManager();
+               $idImage = $image->setImageReturnId($file_extension);
+
+               //Insertion des ID de l'article et de l'image dans la table Display(relation N,N)
+               $display = new DisplayManager();
+               $display->setDisplayAccount($idAccount, $idImage);
+
+               move_uploaded_file($file_tmp_name, $file_dest);
+               $_SESSION["success"]["account"] = "Compte enregistré avec succès !";
+           }else{
+               $_SESSION["error"]["img"] = "La photo du compte n'est pas valide";
+           }
+       }
+
+
    }
    function seeEmployees($post){
         $employees = new EmployeesManager();
@@ -213,11 +292,25 @@ function randomString($size)
         $login = randomString(10);
         $loginPatient = $patient->getLogin($login);
 
-        while($loginPatient->fetch() != false){
-            $login = randomString(10);
+        //VERIFICATION AVANT ENREGISTREMENT
+        if(empty($name) OR !preg_match("/^[A-Za-z' -]+$/",$name)){
+            $_SESSION["error"]["name"] = "Le nom du patient n'est pas valide.";
+        }
+        if(empty($firstname) OR !preg_match("/^[A-Za-z' -]+$/",$firstname)){
+            $_SESSION["error"]["firstname"] = "Le prenom du patient n'est pas valide.";
+        }
+        if(empty($disease) OR !preg_match("/^[A-Za-z0-9' -]+$/",$disease)){
+            $_SESSION["error"]["disease"] = "Le problème de santé n'est pas valide.";
         }
 
-        $patient->setPatient($name, $firstname, $password, $login, $disease);
+        if(empty($_SESSION["error"])){
+            while($loginPatient->fetch() != false){
+                $login = randomString(10);
+            }
+            $patient->setPatient($name, $firstname, $password, $login, $disease);
+            $_SESSION["success"]["account"] = "Compte enregistré avec succès !";
+        }
+
     }
     function seePatients(){// NE PREND LES INFORMATIONS QUE DE GETPATIENTS
         $patients = new PatientsManager();
@@ -273,10 +366,12 @@ function randomString($size)
 
         $channel = new ChannelsManager();
         $channel->setChannel($name, $description);
+        $_SESSION["success"]["channel"] = "Salon créé avec succès !";
     }
     function deleteChannel($id){
         $channel = new ChannelsManager();
         $channel->unsetChannel($id);
+        $_SESSION["success"]["channel"] = "Salon supprimé avec succès !";
     }
 
 //TCHAT

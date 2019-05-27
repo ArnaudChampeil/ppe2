@@ -12,6 +12,10 @@
 
 <div class="section-padding gray-bg" id="Article<?= $_GET["id"]; ?>">
     <div class="container">
+        <?php if(!empty($_SESSION["success"])) : ?>
+            <div class="alert alert-success"><?= $_SESSION["success"]["article"]; ?></div>
+        <?php
+        endif; ?>
 
         <div class="navbar">
             <a class="btn btn-info navbar-right" href="?action=home#articles">Retour à l'écran d'accueil</a>
