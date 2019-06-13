@@ -27,4 +27,10 @@ class AccountsManager{
             "nbMessages" => 0
         ));
     }
+
+    public function setUpdateAccount($password, $email, $id){
+        $db = $this->manager->connectDb();
+        $patient = $db->prepare("UPDATE accounts a SET a.password = ?, a.email = ? WHERE a.id_account = ?");
+        $patient->execute(array($password, $email, $id));
+    }
 }

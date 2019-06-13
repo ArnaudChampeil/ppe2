@@ -24,6 +24,7 @@ try {
             }
             $articles = see5Articles();
             require_once "view/frontend/home.php";
+            unset($_SESSION["error"]);
             exit();
         }
         //PAGE D'ARTICLE INDIVIDUELLE
@@ -44,6 +45,7 @@ try {
                     }
                     require_once "view/frontend/articleEdit.php";
                     unset($_SESSION["error"]);
+                    unset($_SESSION["article"]);
                     exit();
                 }
                 //SUPPRESSION
@@ -72,7 +74,7 @@ try {
                 unset($_SESSION["success"]);
                 exit();
             }
-            //PAGE EMPLOYES ************** "EMPLOYEES.PHP" N'EST PAS RECONNU COMME UN FICHIER PHP, LE FICHIER EST NOMMEE "MPLOYEES.PHP" POUR LE MOMENT **************
+            //PAGE EMPLOYES
             if ($_GET["action"] == "employees") {
                 //AJOUT D'EMPLOYEES
                 if(isset($_POST["name"]) && isset($_POST["firstname"]) && isset($_POST["email"]) && isset($_POST["post"]) && isset($_FILES["imgEmployee"]) && access1()){
@@ -88,7 +90,7 @@ try {
                 $inf = seeEmployees("Infirmier");
                 $aid = seeEmployees("Aide-soignant");
                 $bra = seeEmployees("Brancardier");
-                require_once "view/frontend/mployees.php";
+                require_once "view/frontend/employees.php";
                 unset($_SESSION["error"]);
                 unset($_SESSION["success"]);
                 exit();
@@ -144,7 +146,7 @@ try {
                     exit();
                 }
                 //SUPPRESSION
-                if (isset($_GET["channel"]) == "deleteMessage" && access4()){//PROBLEME D'ID LORS DE LA SUPPRESSION DES MESSAGES SUR LE MODAL
+                if (isset($_GET["channel"]) == "deleteMessage" && access4()){
                     deleteMessage($_GET["id_message"]);
                     header("Location: index.php?action=channel&id_channel=".$_GET["id_channel"]);
                     exit();
@@ -169,7 +171,8 @@ try {
                 exit();
             }
         }else{
-            echo "erreur";
+            require_once "view/frontend/error.php";
+            //exit();
         }
         //DECONNEXION
         if ($_GET["action"] == "logout") {

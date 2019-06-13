@@ -34,7 +34,7 @@
                     </div>
                     <footer class="blockquote-footer">
                         <?php if(isset($data["creationDate"])){
-                            echo "Compte crée le<cite title=\"Source Title\">".$data["creationDate"]."</cite>";
+                            echo "Compte crée le <cite title=\"Source Title\">".$data["creationDate"]."</cite>";
                             }
                         ?>
                         <a href="?action=settings&settings=edit" class=" navbar-right">Modifier</a>

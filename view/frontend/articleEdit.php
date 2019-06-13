@@ -6,14 +6,14 @@
     <header class="header-area overlay section-padding" id="Article<?= $_GET["id"]; ?>">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
             <div class="page-title">
-                <input type="text" name="title" class="form-control" value="<?= $data["title"]; ?>" required>
+                <input type="text" name="title" class="form-control" value="<?php if(!empty($_SESSION["error"])){echo $_SESSION["article"]['title'];}else{echo $data["title"];} ?>" required>
             </div>
         </div>
     </header>
 
     <div class="section-padding gray-bg" id="Article<?= $_GET["id"]; ?>">
         <div class="container">
-            <?php if(!empty($_SESSION["error"])) : ?>
+            <?php if(!empty($_SESSION["error"])) { ?>
                 <div class="alert alert-danger">
                     <p>Vous n'avez pas modifié l'article correctement</p>
                     <ul>
@@ -22,25 +22,44 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-            <?php endif; ?>
 
-            <div class="navbar">
-                <a class="btn btn-info navbar-right" href="?action=home#articles">Retour à l'écran d'accueil</a>
+                <div class="navbar">
+                    <a class="btn btn-info navbar-right" href="?action=home#articles">Retour à l'écran d'accueil</a>
 
-                <button type="submit" class="btn btn-success navbar-right">Valider les modifications</button>
+                    <button type="submit" class="btn btn-success navbar-right">Valider les modifications</button>
 
-                <a class="btn btn-danger navbar-right" href="#delArticle" data-toggle="modal">Supprimer</a>
+                    <a class="btn btn-danger navbar-right" href="#delArticle" data-toggle="modal">Supprimer</a>
 
-            </div>
+                </div>
 
-            <img class="center-block" src="public/img/articles/imgArticle<?= $data["id_article"].$data["extension"]; ?>" alt="<?= $data["title"]; ?>">
+                <img class="center-block" src="public/img/articles/imgArticle<?= $data["id_article"].$data["extension"]; ?>" alt="<?= $data["title"]; ?>">
 
-            <textarea name="content" rows="50" class="form-control" placeholder="Contenu de l'article"  required><?= $data["content"]; ?></textarea>
+                <textarea name="content" rows="50" class="form-control" placeholder="Contenu de l'article"  required><?= $_SESSION["article"]["content"]; ?></textarea>
 
-            <input type="text" name="link" class="form-control" value="<?= $data["link"]; ?>">
+                <input type="text" name="link" class="form-control" value="<?= $_SESSION["article"]["link"]; ?>">
 
-            <p class="navbar-right">Publié le <?= $data["dateCreation"]; ?></p>
+                <p class="navbar-right">Publié le <?= $data["dateCreation"]; ?></p>
 
+            <?php }else{ ?>
+
+                <div class="navbar">
+                    <a class="btn btn-info navbar-right" href="?action=home#articles">Retour à l'écran d'accueil</a>
+
+                    <button type="submit" class="btn btn-success navbar-right">Valider les modifications</button>
+
+                    <a class="btn btn-danger navbar-right" href="#delArticle" data-toggle="modal">Supprimer</a>
+
+                </div>
+
+                <img class="center-block" src="public/img/articles/imgArticle<?= $data["id_article"].$data["extension"]; ?>" alt="<?= $data["title"]; ?>">
+
+                <textarea name="content" rows="50" class="form-control" placeholder="Contenu de l'article"  required><?= $data["content"]; ?></textarea>
+
+                <input type="text" name="link" class="form-control" value="<?= $data["link"]; ?>">
+
+                <p class="navbar-right">Publié le <?= $data["dateCreation"]; ?></p>
+
+            <?php } ?>
         </div>
     </div>
 </form>

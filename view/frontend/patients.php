@@ -18,6 +18,7 @@
                 <?php endif; ?>
             </div>
         </div>
+        <p>Pour se connecter un patient doit saisir son identifiant généré lors de la création de son compte et son mot de passe qui est son nom par défaut.</p>
     </div>
 </header>
 

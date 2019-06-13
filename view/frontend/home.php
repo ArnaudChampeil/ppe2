@@ -136,10 +136,10 @@
         <div class="container">
             <div class="row">
 
-                <a class="btn btn-default" href="?action=loginAdmin">Connexion Admin</a>
+                <!--<a class="btn btn-default" href="?action=loginAdmin">Connexion Admin</a>
                 <a class="btn btn-default" href="?action=loginE">Connexion E</a>
-                <a class="btn btn-default" href="?action=loginP">Connexion P</a>
-                <a class="btn btn-default" href="#connexion" data-toggle="modal">Connexion</a>
+                <a class="btn btn-default" href="?action=loginP">Connexion P</a>-->
+                <?php if (empty($_SESSION["id_account"])){?><a class="btn btn-default" href="#connexion" data-toggle="modal">Connexion</a><?php } ?>
                 <a class="btn btn-default" data-toggle="collapse" data-target="#collapseContact" aria-expanded="true" aria-controls="collapseOne">Contact</a>
 
 
@@ -147,7 +147,7 @@
 
 
                 <div class="col-xs-12 text-center">
-                    <p>&copy;Copyright 2018 All right resurved. Template réalisé par <i class="ti-heart" aria-hidden="true"></i><a href="https://colorlib.com">Colorlib</a></p>
+                    <p>&copy;Copyright 2018 All right resurved. Template réalisé par <a href="https://colorlib.com">Colorlib</a><i class="ti-heart" aria-hidden="true"></i></p>
                 </div>
             </div>
         </div>
@@ -172,7 +172,11 @@
             <div class="modal-body">
 
                 <div class="tab-content">
-
+                    <?php if(!empty($_SESSION["error"])) : ?>
+                        <div class="alert alert-danger">
+                            <p><?= $_SESSION["error"]; ?></p>
+                        </div>
+                    <?php endif; ?>
                     <!-- tab Connexion Patient -->
                     <div id="tabP" class="tab-pane fade in active">
                         <div class="row">

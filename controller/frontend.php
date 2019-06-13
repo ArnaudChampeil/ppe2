@@ -50,7 +50,7 @@ function randomString($size)
         $link = htmlspecialchars($link);
 
         //VERIFICATION AVANT ENREGISTREMENT
-        if(empty($title) OR !preg_match('/^[A-Za-z0-9]+$/',$title)){
+        if(empty($title) OR !preg_match('/^[a-zA-Z0-9éèà]+$/',$title)){
             $_SESSION["error"]["title"] = "Le titre de l'article n'est pas valide.";
         }
         if(empty($content)){
@@ -91,25 +91,32 @@ function randomString($size)
             }else{
                 $_SESSION["error"]["img"] = "L'image de l'article n'est pas valide.";
             }
+        }else{
+            $_SESSION["article"]["title"] = $title;
+            $_SESSION["article"]["content"] = $content;
+            $_SESSION["article"]["link"] = $link;
         }
 
     }
 
     function verifyEditArticle($title, $content, $link){
         //VERIFICATION AVANT ENREGISTREMENT
-        if (empty($title) OR !preg_match('/^[A-Za-z0-9]+$/', $title)) {
+        if (empty($title) OR !preg_match('/^[a-zA-Z0-9éèà]+$/', $title)) {
             $_SESSION["error"]["title"] = "Le titre de l'article n'est pas valide.";
         }
         if (empty($content)) {
             $_SESSION["error"]["content"] = "Le contenu de l'article est vide.";
         }
-        if (empty($link) OR !filter_var($link, FILTER_VALIDATE_URL)) {
+        if (empty($link) OR !filter_var("$link", FILTER_VALIDATE_URL)) {
             $_SESSION["error"]["link"] = "Le lien de l'article n'est pas valide.";
         }
 
         if (empty($_SESSION["error"])) {
             return true;
         }else{
+            $_SESSION["article"]["title"] = $title;
+            $_SESSION["article"]["content"] = $content;
+            $_SESSION["article"]["link"] = $link;
             return false;
         }
     }
@@ -166,10 +173,10 @@ function randomString($size)
        }
 
        //VERIFICATION AVANT ENREGISTREMENT
-       if(empty($name) OR !preg_match("/^[A-Za-z' -]+$/",$name)){
+       if(empty($name) OR !preg_match("/^[A-Za-zéèà' -]+$/",$name)){
            $_SESSION["error"]["name"] = "Le nom de l'employé n'est pas valide.";
        }
-       if(empty($firstname) OR !preg_match("/^[A-Za-z' -]+$/",$firstname)){
+       if(empty($firstname) OR !preg_match("/^[A-Za-zéèà' -]+$/",$firstname)){
            $_SESSION["error"]["firstname"] = "Le prenom de l'employé n'est pas valide.";
        }
        if(empty($email) OR !filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -225,6 +232,7 @@ function randomString($size)
             return true;
         }
         else{
+            $_SESSION["error"] = "L'email ou le mot de passe est incorrect";
             return false;
         }
     }
@@ -293,13 +301,13 @@ function randomString($size)
         $loginPatient = $patient->getLogin($login);
 
         //VERIFICATION AVANT ENREGISTREMENT
-        if(empty($name) OR !preg_match("/^[A-Za-z' -]+$/",$name)){
+        if(empty($name) OR !preg_match("/^[A-Za-zéèà' -]+$/",$name)){
             $_SESSION["error"]["name"] = "Le nom du patient n'est pas valide.";
         }
-        if(empty($firstname) OR !preg_match("/^[A-Za-z' -]+$/",$firstname)){
+        if(empty($firstname) OR !preg_match("/^[A-Za-zéèà' -]+$/",$firstname)){
             $_SESSION["error"]["firstname"] = "Le prenom du patient n'est pas valide.";
         }
-        if(empty($disease) OR !preg_match("/^[A-Za-z0-9' -]+$/",$disease)){
+        if(empty($disease) OR !preg_match("/^[A-Za-z0-9éèà' -]+$/",$disease)){
             $_SESSION["error"]["disease"] = "Le problème de santé n'est pas valide.";
         }
 
@@ -336,6 +344,7 @@ function randomString($size)
             return true;
         }
         else{
+            $_SESSION["error"] = "L'identifiant ou le mot de passe est incorrect";
             return false;
         }
     }
@@ -411,5 +420,5 @@ function randomString($size)
         $passHash = password_hash($password, PASSWORD_DEFAULT);
 
         $patient = new PatientsManager();
-        $patient->setUpdatePatient($passHash, $email, $id);
+        $patient->setUpdateAccount($passHash, $email, $id);
     }

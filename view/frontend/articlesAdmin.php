@@ -22,8 +22,7 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
-        <?php
-        endif; ?>
+        <?php endif; ?>
         <?php if(!empty($_SESSION["success"])) : ?>
             <div class="alert alert-success"><?= $_SESSION["success"]["article"]; ?></div>
         <?php endif; ?>
@@ -33,11 +32,11 @@
         <?php endif; ?>
         <div id="collapseAddArticle" class="collapse" aria-labelledby="headingOne">
             <form action="" method="POST" class="card-body form-control" enctype="multipart/form-data">
-                <input type="text" name="title" class="form-control" placeholder="Titre" required>
+                <input type="text" name="title" class="form-control" placeholder="Titre" value="<?php if (isset($_SESSION["article"]["title"])){echo $_SESSION["article"]["title"];}?>" required>
 
-                <textarea name="content" rows="20" class="form-control" placeholder="Contenu de l'article" required></textarea>
+                <textarea name="content" rows="20" class="form-control" placeholder="Contenu de l'article" required><?php if (isset($_SESSION["article"]["content"])){echo $_SESSION["article"]["content"];}?></textarea>
 
-                <input type="text" name="link" class="form-control" placeholder="Lien de l'article (si l'article vient d'un autre site)">
+                <input type="text" name="link" class="form-control" placeholder="Lien de l'article (si l'article vient d'un autre site)" value="<?php if (isset($_SESSION["article"]["link"])){echo $_SESSION["article"]["link"];}?>">
 
                 <input type="hidden" name="MAX_FILE_SIZE" value="600000" /> <!-- Limite 600ko  FONCTIONNE PAS -->
                 <input type="file" name="imgArticle" class="form-control" placeholder="Upload la photo de l'image" required>

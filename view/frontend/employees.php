@@ -16,9 +16,11 @@
                 <?php if (access1()) : ?>
                     <a href="#addEmployee" class="button white" data-toggle="modal">Créer un nouveau compte employé</a>
                 <?php endif; ?>
-
             </div>
         </div>
+        <?php if (access5()) : ?>
+            <p>Pour se connecter un employé doit saisir son email et son mot de passe qui est son nom par défaut.</p>
+        <?php endif; ?>
     </div>
 </header>
 

@@ -1182,9 +1182,7 @@ preloader
 .message {
     color: #0c5460;
     background-color: #b6e6f1;
-    width: fit-content;
-    text-align: right;
-
+    width: max-content;
     position: relative;
     padding: 0.75rem 1.25rem;
     border: 1px solid transparent;
