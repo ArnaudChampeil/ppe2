@@ -50,13 +50,13 @@ function randomString($size)
         $link = htmlspecialchars($link);
 
         //VERIFICATION AVANT ENREGISTREMENT
-        if(empty($title) OR !preg_match('/^[a-zA-Z0-9éèà]+$/',$title)){
+        if(empty($title)){// OR !preg_match("/^[a-zA-Z0-9éèà' -]+$/",$title)
             $_SESSION["error"]["title"] = "Le titre de l'article n'est pas valide.";
         }
         if(empty($content)){
             $_SESSION["error"]["content"] = "Le contenu de l'article est vide.";
         }
-        if(empty($link) OR !filter_var($link, FILTER_VALIDATE_URL)){
+        if(empty($link) OR !filter_var("$link", FILTER_VALIDATE_URL)){
             $_SESSION["error"]["link"] = "Le lien de l'article n'est pas valide.";
         }
 
@@ -101,7 +101,7 @@ function randomString($size)
 
     function verifyEditArticle($title, $content, $link){
         //VERIFICATION AVANT ENREGISTREMENT
-        if (empty($title) OR !preg_match('/^[a-zA-Z0-9éèà]+$/', $title)) {
+        if (empty($title) OR !preg_match('/^[a-zA-Z0-9éèà\' -]+$/', $title)) {
             $_SESSION["error"]["title"] = "Le titre de l'article n'est pas valide.";
         }
         if (empty($content)) {
