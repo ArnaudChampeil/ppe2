@@ -72,6 +72,7 @@ try {
                 require_once "view/frontend/articlesAdmin.php";
                 unset($_SESSION["error"]);
                 unset($_SESSION["success"]);
+                unset($_SESSION["article"]);
                 exit();
             }
             //PAGE EMPLOYES
